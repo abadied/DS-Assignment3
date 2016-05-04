@@ -40,7 +40,29 @@ class AVLTree
     /* Function to insert data recursively */
     private AVLNode insert(Comparable x, AVLNode t)
     {
-        //Complete Your Code Here
+        if (t==null)
+        	t=new AVLNode(x);
+        else if(t.data.compareTo(x)==-1){
+        	t.left = insert(x,t.left);
+        	if (height(t.left) - height(t.right) == 2){
+        		if (x.compareTo(t.left.data)<0)
+        			t = rotateWithLeftChild(t);
+        		else
+        			t = doubleWithLeftChild(t);
+        	}
+        	
+        }
+        else if(t.data.compareTo(x)==1){
+        	t.right = insert(x,t.right);
+	    	if (height(t.right) - height(t.left) == 2){
+	    		if (x.compareTo(t.right.data)<0)
+	    			t = rotateWithLeftChild(t);
+	    		else
+	    			t = doubleWithLeftChild(t);
+	    	}
+        }
+        t.height = max(height(t.left), height(t.right)) + 1;
+        return t;
     }
     /* Rotate binary tree node with left child */
     private AVLNode rotateWithLeftChild(AVLNode k2)

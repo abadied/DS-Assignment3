@@ -17,7 +17,7 @@ public class Data implements Comparable{
 	public int compareTo(Object o) {
 		if (o instanceof String)
 			return index.compareTo((String)o);
-		return -2;
+		return index.compareTo(((Data)o).index);
 	}
 	
 }
