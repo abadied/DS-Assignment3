@@ -8,17 +8,19 @@ class AVLTree
     /* Constructor */
     public AVLTree()
     {
-       //Complete Your Code Here
+    	root=null;
     }
     /* Function to check if tree is empty */
     public boolean isEmpty()
     {
-        //Complete Your Code Here
+    	if(root==null)
+    		return true;
+    	return false;
     }
     /* Make the tree logically empty */
     public void makeEmpty()
     {
-        //Complete Your Code Here
+    	root=null;
     }
     /* Function to insert data */
     public void insert(Comparable data)
@@ -26,7 +28,7 @@ class AVLTree
         //Complete Your Code Here
     }
     /* Function to get height of node */
-    private int height(AVLNode t )
+    private int height(AVLNode t)
     {
         //Complete Your Code Here
     }
@@ -68,29 +70,49 @@ class AVLTree
     /* Functions to count number of nodes */
     public int countNodes()
     {
-        //Complete Your Code Here
+    	  return countNodes(root);
     }
     private int countNodes(AVLNode r)
     {
-        //Complete Your Code Here
+    	if(r==null)
+    		return 0;
+        return countNodes(r.right) + countNodes(r.left) + 1;
+    	
     }
     /* Functions to search for an element */
     public boolean search(Comparable val)
     {
-        //Complete Your Code Here
+    	return(search(root,val));
     }
     private boolean search(AVLNode r, Comparable val)
     {
-        //Complete Your Code Here
+    	if (r==null)
+    		return false;
+    	switch (r.data.compareTo(val)){
+    		case 1:
+    			return search(r.left,val);
+    		case -1:
+    			return search(r.right,val);
+			default:
+				return true;
+    	}
     }
     /* Function for inorder traversal */
     public void inorder(PrintWriter out)
     {
-        //Complete Your Code Here
+    	if(root==null)
+    		out.write("tree is empty");
+    	else
+    		inorder(root,out);
     }
     private void inorder(AVLNode r, PrintWriter out)
     {
-        //Complete Your Code Here
+    	if(r.left!=null)
+    		inorder(r.left,out);
+    	out.write(r.toString());
+    	//TODO: check toString
+    	if(r.right!=null)
+    		inorder(r.right,out);
     }
 
     public int[] getPrivateKey(String sIndex) {
