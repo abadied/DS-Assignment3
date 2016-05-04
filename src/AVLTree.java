@@ -25,7 +25,7 @@ class AVLTree
     /* Function to insert data */
     public void insert(Comparable data)
     {
-        //Complete Your Code Here
+        insert(data, root);
     }
     /* Function to get height of node */
     private int height(AVLNode t)
@@ -118,6 +118,7 @@ class AVLTree
     {
     	return(search(root,val));
     }
+    
     private boolean search(AVLNode r, Comparable val)
     {
     	if (r==null)
@@ -131,6 +132,7 @@ class AVLTree
 				return true;
     	}
     }
+    
     /* Function for inorder traversal */
     public void inorder(PrintWriter out)
     {
@@ -139,6 +141,7 @@ class AVLTree
     	else
     		inorder(root,out);
     }
+    
     private void inorder(AVLNode r, PrintWriter out)
     {
     	if(r.left!=null)

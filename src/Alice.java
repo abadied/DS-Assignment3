@@ -31,6 +31,7 @@ public class Alice {
     			riddle[j] = (int)((j+Math.random())*Math.pow(n, 3));
     		}
     		puzzlesArray[i] = new Puzzle(key,riddle);
+    		tree.insert(new Data(arrXOR(riddle),key));
     	}
     	//TODO: test
     }
@@ -45,9 +46,32 @@ public class Alice {
     		arr[loc] = temp;
     	}
     }
+    
+    private int XOR(int a, int b){
+    	if (a!=b)
+    		return 1;
+    	return 0;
+    }
+    
+    private int intXOR(int num){
+    	int curr = num%2;
+    	num = num/2;
+    	while (num >= 1){
+    		curr = XOR(curr,num%2);
+    		num = num/2;
+    	}
+    	return curr;
+    }
+    
+    private String arrXOR(int[] arr){
+    	String s="";
+    	for (int i=0 ; i<arr.length ; i++)
+    		s += intXOR(arr[i]);
+    	return s;
+    }
 
     public Pair<String, Integer> findKey(String sIndex){
-        //Complete Your Code Here
+        tree.getPrivateKey(sIndex);
     }
 
 
