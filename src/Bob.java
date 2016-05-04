@@ -50,18 +50,10 @@ public class Bob {
     	return curr;
     }
     
-    public String arrXOR(int[] arr){
+    private String arrXOR(int[] arr){
     	String s="";
     	for (int i=0 ; i<arr.length ; i++)
     		s += intXOR(arr[i]);
     	return s;
-    }
-    
-    public static void main(String[] args){
-    	Bob b=new Bob();
-    	int[] arr = new int[2];
-    	arr[0]=5;
-    	arr[1]=10;
-    	System.out.println(b.arrXOR(arr));
     }
 }

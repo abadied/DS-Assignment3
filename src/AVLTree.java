@@ -30,12 +30,12 @@ class AVLTree
     /* Function to get height of node */
     private int height(AVLNode t)
     {
-        //Complete Your Code Here
+        return t.height;
     }
     /* Function to max of left/right node */
     private int max(int lhs, int rhs)
     {
-        //Complete Your Code Here
+        return Math.max(lhs,rhs);
     }
     /* Function to insert data recursively */
     private AVLNode insert(Comparable x, AVLNode t)
@@ -45,27 +45,39 @@ class AVLTree
     /* Rotate binary tree node with left child */
     private AVLNode rotateWithLeftChild(AVLNode k2)
     {
-        //Complete Your Code Here
+    	AVLNode x = k2.left;
+    	k2.left = x.right;
+    	x.right = k2;
+    	k2.height = max(height(k2.left), height(k2.right)) + 1;
+    	x.height = max(height(x.left), k2.height) + 1;
+       	return x;
     }
 
     /* Rotate binary tree node with right child */
     private AVLNode rotateWithRightChild(AVLNode k1)
     {
-        //Complete Your Code Here
+    	AVLNode y = k1.right;
+    	k1.right = y.left;
+    	y.left = k1;
+    	k1.height = max(height(k1.left), height(k1.right)) + 1;
+    	y.height = max(height(y.right), k1.height) + 1;
+    	return y;
     }
     /**
      * Double rotate binary tree node: first left child
      * with its right child; then node k3 with new left child */
     private AVLNode doubleWithLeftChild(AVLNode k3)
     {
-        //Complete Your Code Here
+    	k3.left = rotateWithRightChild(k3.left);
+        return rotateWithLeftChild(k3);
     }
     /**
      * Double rotate binary tree node: first right child
      * with its left child; then node k1 with new right child */
     private AVLNode doubleWithRightChild(AVLNode k1)
     {
-        //Complete Your Code Here
+    	k1.right = rotateWithLeftChild( k1.right );
+        return rotateWithRightChild( k1 );
     }
     /* Functions to count number of nodes */
     public int countNodes()
@@ -116,10 +128,21 @@ class AVLTree
     }
 
     public int[] getPrivateKey(String sIndex) {
-        //Complete Your Code Here
+        return getPrivateKey(root,sIndex);
     }
 
     private int[] getPrivateKey(AVLNode r, String sIndex) {
-        //Complete Your Code Here
+    	if (r==null)
+    		return null;
+    	switch (r.data.compareTo(sIndex)){
+    		case 1:
+    			return getPrivateKey(r.left,sIndex);
+    		case -1:
+    			return getPrivateKey(r.right,sIndex);
+			case 0:
+				return ((Data)r.data).getPrivateKey();
+			default:
+				return null;
+    	}
     }
 }
