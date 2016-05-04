@@ -4,10 +4,12 @@ import javafx.util.Pair;
 public class Alice {
 
     private Puzzle [] puzzlesArray;
+    private AVLTree tree;
     //Add Fields if needed
 
     public Alice(){
     	puzzlesArray=null;
+    	tree=new AVLTree();
     }
 
     public Puzzle[] getPuzzlesCopy(){
