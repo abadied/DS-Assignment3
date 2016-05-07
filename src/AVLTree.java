@@ -25,12 +25,33 @@ class AVLTree
     /* Function to insert data */
     public void insert(Comparable data)
     {
-        insert(data, root);
+        root = insert(data, root);
     }
     /* Function to get height of node */
     private int height(AVLNode t)
     {
+    	if (t==null){
+    		return -1;
+    	}
         return t.height;
+    }
+    
+    public int deep(String sIndex) {
+    	return deep(root,sIndex);
+    }
+    private int deep(AVLNode t, String sIndex){
+    	if (t==null)
+    		return 0;
+    	switch (t.data.compareTo(sIndex)){
+    		case 1:
+    			return 1+deep(t.left,sIndex);
+    		case 0:
+    			return 1;
+    		case -1:
+    			return 1+deep(t.right,sIndex);
+			default:
+				return -1;
+    	}
     }
     /* Function to max of left/right node */
     private int max(int lhs, int rhs)
@@ -40,9 +61,10 @@ class AVLTree
     /* Function to insert data recursively */
     private AVLNode insert(Comparable x, AVLNode t)
     {
-        if (t==null)
+        if (t==null){
         	t=new AVLNode(x);
-        else if(t.data.compareTo(x)==-1){
+        }
+        else if(x.compareTo(t.data)==-1){
         	t.left = insert(x,t.left);
         	if (height(t.left) - height(t.right) == 2){
         		if (x.compareTo(t.left.data)<0)
@@ -52,13 +74,13 @@ class AVLTree
         	}
         	
         }
-        else if(t.data.compareTo(x)==1){
+        else if(x.compareTo(t.data)==1){
         	t.right = insert(x,t.right);
 	    	if (height(t.right) - height(t.left) == 2){
-	    		if (x.compareTo(t.right.data)<0)
-	    			t = rotateWithLeftChild(t);
+	    		if (x.compareTo(t.right.data)>0)
+	    			t = rotateWithRightChild(t);
 	    		else
-	    			t = doubleWithLeftChild(t);
+	    			t = doubleWithRightChild(t);
 	    	}
         }
         t.height = max(height(t.left), height(t.right)) + 1;

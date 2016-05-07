@@ -14,7 +14,7 @@ public class Eve {
     	for (int i=0 ; i<puzzles.length ; i++){
 			currPair = solvePuzzle(puzzles[i]);
 			if (currPair.getKey().equals(index))
-				return new Pair<String,Integer>(currPair.getValue(),i);
+				return new Pair<String,Integer>(currPair.getValue(),i+1);
 		}
     	
     	return null;

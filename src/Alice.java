@@ -1,3 +1,5 @@
+import java.io.PrintWriter;
+
 import javafx.util.Pair;
 
 
@@ -33,7 +35,6 @@ public class Alice {
     		puzzlesArray[i] = new Puzzle(key,riddle);
     		tree.insert(new Data(arrXOR(riddle),key));
     	}
-    	//TODO: test
     }
     
     private void RandomShuffle(int[] arr){
@@ -71,7 +72,10 @@ public class Alice {
     }
 
     public Pair<String, Integer> findKey(String sIndex){
-        tree.getPrivateKey(sIndex);
+        String privateKey = arrXOR(tree.getPrivateKey(sIndex));
+        int checkNum = tree.deep(sIndex);
+        
+        return new Pair(privateKey,checkNum);
     }
 
 

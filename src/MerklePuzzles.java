@@ -61,6 +61,9 @@ public class MerklePuzzles {
         Eve_findKey();
     }
 
-
+    public static void main(String args[]){
+    	MerklePuzzles mp = new MerklePuzzles();
+    	mp.fullTest(10, 10);
+    }
 
 }
