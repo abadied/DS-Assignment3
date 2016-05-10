@@ -7,13 +7,19 @@ public class Alice {
 
     private Puzzle [] puzzlesArray;
     private AVLTree tree;
-    //Add Fields if needed
 
+    /**
+     * constructor
+     */
     public Alice(){
     	puzzlesArray=null;
     	tree=new AVLTree();
     }
-
+    
+    /**
+     * 
+     * @return a copy of puzzlesArray
+     */
     public Puzzle[] getPuzzlesCopy(){
         Puzzle[] puzzlesCopy = new Puzzle[puzzlesArray.length];
         for(int i = 0; i < puzzlesArray.length; i++){
@@ -21,9 +27,15 @@ public class Alice {
         }
         return puzzlesCopy;
     }
-
+    
+    /**
+     * create new puzzles
+     * @param n the size of an array
+     * @param k the number of arrays
+     */
     public void createPuzzles(int n, int k){
     	puzzlesArray=new Puzzle[k];
+    	Data newPuz=null;
     	int[] key,riddle;
     	for (int i=0 ; i < k ; i++){
     		key = new int[n];
@@ -32,11 +44,24 @@ public class Alice {
     			key[j] = (int)((j+Math.random())*Math.pow(n, 3));
     			riddle[j] = (int)((j+Math.random())*Math.pow(n, 3));
     		}
-    		puzzlesArray[i] = new Puzzle(key,riddle);
-    		tree.insert(new Data(arrXOR(riddle),key));
+    		newPuz= new Data(arrXOR(riddle),key);
+    		if(!tree.search(newPuz)){
+    			tree.insert(newPuz);
+    			puzzlesArray[i] = new Puzzle(key,riddle);
+    		}
+    		else{
+    			i--;
+    			System.out.println("found");
+    		}
+    			
+    			
     	}
     }
     
+    /**
+     * shuffles a given array
+     * @param arr
+     */
     private void RandomShuffle(int[] arr){
     	int n = arr.length;
     	int temp,loc;
@@ -48,12 +73,23 @@ public class Alice {
     	}
     }
     
+    /**
+     * this function XORing two int parameters
+     * @param a
+     * @param b
+     * @return XOR of a and b
+     */
     private int XOR(int a, int b){
     	if (a!=b)
     		return 1;
     	return 0;
     }
     
+    /**
+     * this function turns a number on 10 base to a binary number
+     * @param num
+     * @return binary number(num)
+     */
     private int intXOR(int num){
     	int curr = num%2;
     	num = num/2;
@@ -64,13 +100,23 @@ public class Alice {
     	return curr;
     }
     
+    /**
+     * the function XOR an array
+     * @param arr
+     * @return XORed array
+     */
     private String arrXOR(int[] arr){
     	String s="";
     	for (int i=0 ; i<arr.length ; i++)
     		s += intXOR(arr[i]);
     	return s;
     }
-
+    
+    /**
+     * finds the key matching to sIndex
+     * @param sIndex
+     * @return a pair of the matching key and number of checks until found
+     */
     public Pair<String, Integer> findKey(String sIndex){
         String privateKey = arrXOR(tree.getPrivateKey(sIndex));
         int checkNum = tree.deep(sIndex);

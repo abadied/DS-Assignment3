@@ -75,7 +75,7 @@ public class MerklePuzzles {
     	long ACT=0,ECT=0;
     	int ACC=0,ECC=0;
     	for (int i=0 ; i<10 ; i++){
-    		mp.fullTest(130, 140000);
+    		mp.fullTest(15, 500);
     		ACT+=mp.aliceCheckTime;
     		ECT+=mp.eveCheckTime;
     		ACC+=mp.aliceCompCount;
