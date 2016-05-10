@@ -51,7 +51,6 @@ public class Alice {
     		}
     		else{
     			i--;
-    			System.out.println("found");
     		}
     			
     			

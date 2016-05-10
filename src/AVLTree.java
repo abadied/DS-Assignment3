@@ -141,6 +141,12 @@ class AVLTree
     	return(search(root,val));
     }
     
+    /**
+     * The function searches the object val int the tree
+     * @param r starting node
+     * @param val
+     * @return boolean true or false
+     */
     private boolean search(AVLNode r, Comparable val)
     {
     	if (r==null)
@@ -177,7 +183,12 @@ class AVLTree
     public int[] getPrivateKey(String sIndex) {
         return getPrivateKey(root,sIndex);
     }
-
+    /**
+     * The function finds the matching private key for sIndex
+     * @param r starting node
+     * @param sIndex 
+     * @return the key
+     */
     private int[] getPrivateKey(AVLNode r, String sIndex) {
     	if (r==null)
     		return null;

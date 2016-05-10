@@ -2,12 +2,20 @@ public class Puzzle {
 
     private int[] privateKey;
     private int[] riddle;
-
+    /**
+     * constructor
+     * @param privateKey
+     * @param riddle
+     */
     public Puzzle(int[] privateKey, int[] riddle){
         this.privateKey = privateKey;
         this.riddle = riddle;
     }
-
+    
+    /**
+     * copy a Puzzle
+     * @param o
+     */
     public Puzzle(Puzzle o){
         int [] oRiddle = o.getRiddle();
         int [] oPrivateKey = o.getPrivateKey();
@@ -20,11 +28,18 @@ public class Puzzle {
             riddle[i] = oRiddle[i];
         }
     }
-
+    /**
+     * 
+     * @return privateKey
+     */
     public int[] getPrivateKey(){
         return privateKey;
     }
-
+    
+    /**
+     * 
+     * @return riddle
+     */
     public int[] getRiddle() {
         return riddle;
     }
