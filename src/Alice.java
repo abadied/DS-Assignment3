@@ -1,8 +1,5 @@
 import java.io.PrintWriter;
 
-import javafx.util.Pair;
-
-
 public class Alice {
 
     private Puzzle [] puzzlesArray;
@@ -117,10 +114,10 @@ public class Alice {
      * @return a pair of the matching key and number of checks until found
      */
     public Pair<String, Integer> findKey(String sIndex){
-        String privateKey = arrXOR(tree.getPrivateKey(sIndex));
-        int checkNum = tree.deep(sIndex);
+    	Pair<int[], Integer> keyPair = tree.getPrivateKey(sIndex);
+        String privateKey = arrXOR(keyPair.getKey());
         
-        return new Pair(privateKey,checkNum);
+        return new Pair(privateKey,keyPair.getValue());
     }
 
 

@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 import java.io.*;
 
 public class Eve {

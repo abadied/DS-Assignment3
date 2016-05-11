@@ -1,4 +1,3 @@
-import javafx.util.Pair;
 
 public class MerklePuzzles {
 

@@ -13,8 +13,8 @@ public class Puzzle {
     }
     
     /**
-     * copy a Puzzle
-     * @param o
+     * copies a Puzzle
+     * @param o other puzzle to copy
      */
     public Puzzle(Puzzle o){
         int [] oRiddle = o.getRiddle();

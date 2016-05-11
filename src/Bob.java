@@ -1,5 +1,3 @@
-import javafx.util.Pair;
-
 import java.io.*;
 
 public class Bob {
@@ -11,9 +9,9 @@ public class Bob {
     }
     
     /**
-     * choose randomly a puzzle from the puzzle array
-     * @param puzzles
-     * @return chosen puzzle using the function solePuzzle
+     * Chooses randomly a puzzle from the puzzles array, and solves it
+     * @param puzzles The puzzles array to choose from
+     * @return the solved puzzle
      */
     public Pair<String, String> choosePuzzle(Puzzle[] puzzles){
 		int n = puzzles.length;

@@ -36,19 +36,19 @@ class AVLTree
         return t.height;
     }
     
-    public int deep(String sIndex) {
-    	return deep(root,sIndex);
+    private int depth(String sIndex) {
+    	return depth(root,sIndex);
     }
-    private int deep(AVLNode t, String sIndex){
+    private int depth(AVLNode t, String sIndex){
     	if (t==null)
     		return 0;
     	switch (t.data.compareTo(sIndex)){
     		case 1:
-    			return 1+deep(t.left,sIndex);
+    			return 1+depth(t.left,sIndex);
     		case 0:
     			return 1;
     		case -1:
-    			return 1+deep(t.right,sIndex);
+    			return 1+depth(t.right,sIndex);
 			default:
 				return -1;
     	}
@@ -180,8 +180,9 @@ class AVLTree
     		inorder(r.right,out);
     }
 
-    public int[] getPrivateKey(String sIndex) {
-        return getPrivateKey(root,sIndex);
+    public Pair<int[],Integer> getPrivateKey(String sIndex) {
+    	int[] pKey = getPrivateKey(root,sIndex);
+        return new Pair<int[],Integer>(pKey,depth(sIndex));
     }
     /**
      * The function finds the matching private key for sIndex
