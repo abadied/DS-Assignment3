@@ -1,12 +1,12 @@
 /**
- * Contains the AVLNode data
+ * a comparable object that contains needed fields for AVLtree 
+ * @author eden&shahaf
  *
  */
 public class Data implements Comparable{
 	
 	private String index;
 	private int[] privateKey;
-	
 	/**
 	 * constructor
 	 * @param index represent the comp string

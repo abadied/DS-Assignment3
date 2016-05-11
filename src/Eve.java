@@ -1,7 +1,6 @@
 import java.io.*;
 
 public class Eve {
-	
 
     public Eve(){}
     
@@ -13,11 +12,14 @@ public class Eve {
      */
     public Pair<String, Integer> findKey(String index, Puzzle[] puzzles){
     	Pair<String,String> currPair;
-    	
     	for (int i=0 ; i<puzzles.length ; i++){
-			currPair = solvePuzzle(puzzles[i]);
-			if (currPair.getKey().equals(index))
-				return new Pair<String,Integer>(currPair.getValue(),i+1);
+			
+			if(equalRiddle(index,puzzles[i].getRiddle())){
+				currPair = solvePuzzle(puzzles[i]);
+				if (currPair.getKey().equals(index))
+					return new Pair<String,Integer>(currPair.getValue(),i+1);
+    		}
+			
 		}
     	
     	return null;
@@ -88,5 +90,20 @@ public class Eve {
     		s += intXOR(arr[i]);
     	return s;
     }
-
+    
+    /**
+     * The function returns true id the string index is the same as the array arr
+     * @param index
+     * @param arr
+     * @return true if equals
+     */
+    private boolean equalRiddle(String index,int[] arr){
+    	boolean ans=true;
+    	for(int i=0;i<arr.length&&ans;i++){
+    		if(index.charAt(i)!=(char)intXOR(arr[i])+'0'){
+    			ans=false;
+    		}
+    	}
+    	return ans;
+    }
 }
