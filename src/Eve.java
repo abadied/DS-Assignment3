@@ -16,8 +16,7 @@ public class Eve {
 			
 			if(equalRiddle(index,puzzles[i].getRiddle())){
 				currPair = solvePuzzle(puzzles[i]);
-				if (currPair.getKey().equals(index))
-					return new Pair<String,Integer>(currPair.getValue(),i+1);
+				return new Pair<String,Integer>(currPair.getValue(),i+1);
     		}
 			
 		}
@@ -95,7 +94,7 @@ public class Eve {
      * The function returns true id the string index is the same as the array arr
      * @param index
      * @param arr
-     * @return true if equals
+     * @return true if equals 
      */
     private boolean equalRiddle(String index,int[] arr){
     	boolean ans=true;
