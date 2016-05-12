@@ -35,10 +35,11 @@ class AVLTree
     	}
         return t.height;
     }
-    
+    /* Function to get the depth of node */
     private int depth(String sIndex) {
     	return depth(root,sIndex);
     }
+    /* Function to get the depth of node */
     private int depth(AVLNode t, String sIndex){
     	if (t==null)
     		return 0;
