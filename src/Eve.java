@@ -98,12 +98,11 @@ public class Eve {
      * @return true if equals
      */
     private boolean equalRiddle(String index,int[] arr){
-    	boolean ans=true;
-    	for(int i=0;i<arr.length&&ans;i++){
+    	for(int i=0 ; i<arr.length ; i++){
     		if(index.charAt(i)!=(char)intXOR(arr[i])+'0'){
-    			ans=false;
+    			return false;
     		}
     	}
-    	return ans;
+    	return true;
     }
 }
